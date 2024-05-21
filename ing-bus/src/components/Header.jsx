@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      <h1>ING BUS</h1>
+      <h1></h1>
       <nav>
         <ul>
           <li>
@@ -11,7 +11,6 @@ function Header() {
             <a href="/contact">Contact</a>
           </li>
         </ul>
-        <hr />
       </nav>
     </header>
   );
