@@ -1,8 +1,8 @@
-import Header from "./components/Header.jsx";
+import 'leaflet/dist/leaflet.css';
 import Footer from "./components/Footer.jsx";
 import Navbar from "./components/Navbar.jsx";
 import LocationCities from "./components/LocationCities.jsx";
-import LocationOffices from "./components/LocationOffices.jsx";
+import Map from "./components/Map.jsx";
 
 function App() {
   const appStyles = {
@@ -39,6 +39,8 @@ function App() {
     alignItems: 'center',
     width: '25%',
     height: '100%',
+    padding: '0',
+    margin: '0',
   };
 
   const headerStyles = {
@@ -49,21 +51,24 @@ function App() {
     height: '10%',
   };
 
+  const locations = [
+    { lat: 52.3702, lng: 4.8952 },
+  ];
+
   return (
     <div style={appStyles}>
       <Navbar/>
-      <Header style={headerStyles} />
       <div style={contentStyles}>
-        <div style={squareStyles}></div>
-        <div style={locationStyles}>
-          <LocationCities />
+        <div style={squareStyles}>
+          <Map locations={locations}/>
         </div>
         <div style={locationStyles}>
-          <LocationOffices />
+          <LocationCities />
         </div>
       </div>
       <Footer />
     </div>
+    
   );
 }
 
