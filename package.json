@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "leaflet-rotatedmarker": "^0.2.0",
     "react-google-maps": "^9.4.5",
     "react-leaflet-control": "^2.1.2"
   }

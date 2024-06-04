@@ -1,24 +1,32 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import ingIcon from '../assets/favicon.ico';
+import ingBusIcon from '../assets/ing-bus.png';
+import Routing from './Routing';
 
 const Legend = () => {
   return (
     <div style={{ position: 'absolute', bottom: 945, left: 20, zIndex: 1000, backgroundColor: 'white', padding: 10, borderRadius: 10, }}>
       <div style={{ fontWeight: 'bold', fontFamily: 'Arial, sans-serif', color: 'black', fontSize: 16 }}>
-        Total distance: 220KMs<br />
-        Fuel left: 45KMs<br />
-        Items deleted: 6000
+        Total distance: 17.8 KM<br />
+        Fuel left: 45 KM<br />
+        Items deleted: 440
       </div>
     </div>
   );
 };
 
-const Map = ({ currentLocation }) => {
+const Map = () => {
   const defaultCenter = [52.1326, 5.2913];
   
   const customIcon = new Icon({
     iconUrl: ingIcon,
+    iconSize: [40, 40],
+    iconAnchor: [12, 41],
+  });
+
+  const bus = new Icon({
+    iconUrl: ingBusIcon,
     iconSize: [40, 40],
     iconAnchor: [12, 41],
   });
@@ -65,6 +73,9 @@ const Map = ({ currentLocation }) => {
     { name: 'Alkmaar - Laat 214', lat: 52.6340, lng: 4.7465 }
   ];
 
+  const start = [53.2003, 5.7988]; // start point
+  const end = [53.2244, 6.0441]; // end point
+
   return (
     <div style={{ height: "100%", width: "100%", position: 'relative' }}>
       <style>
@@ -88,28 +99,39 @@ const Map = ({ currentLocation }) => {
         `}
       </style>
       <MapContainer center={defaultCenter} zoom={8} style={{ height: "100%", width: "100%" }} zoomControl={false}>
-  <TileLayer
-    url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-    attribution=''
-  />
-  <TileLayer
-    url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
-    attribution=''
-  />
-  {
-    locations.map((location, index) => (
-      <Marker
-        key={index}
-        position={[location.lat, location.lng]}
-        icon={customIcon}
-      >
-        <Popup className="custom-popup">
-          <span>{location.name}</span>
-        </Popup>
-      </Marker>
-    ))
-  }
-</MapContainer>
+        <TileLayer
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+          attribution=''
+        />
+        <TileLayer
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
+          attribution=''
+        />
+        {
+          locations.map((location, index) => (
+            <Marker
+              key={index}
+              position={[location.lat, location.lng]}
+              icon={customIcon}
+            >
+              <Popup className="custom-popup">
+                <span>{location.name}</span>
+              </Popup>
+            </Marker>
+          ))
+        }
+        <Marker
+          position={[53.224373753071445, 6.0438818947904235]}
+          icon={bus}
+          rotationAngle={355}
+          rotationOrigin={'center center'}
+        >
+          <Popup className="custom-popup">
+            <span>ING BUS</span>
+          </Popup>
+        </Marker>
+        <Routing start={start} end={end} />
+      </MapContainer>
       <Legend />
     </div>
   );

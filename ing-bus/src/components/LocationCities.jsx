@@ -85,9 +85,14 @@ function LocationCities() {
     
     const combined = cities.map((city, i) => `${city} - ${addresses[i]}`);
 
-    const locationItems = combined.map((location, index) => (
-        <li key={index}>{location}</li>
-    ));
+    const locationItems = combined.map((location, index) => {
+        const isHighlighted = location === "Leeuwarden - Tesselschadedestraat 1" || location === "Leeuwarden - Zuiderplein 6";
+        return (
+          <li key={index} style={{ color: isHighlighted ? '#ff5e36' : 'inherit' }}>
+            {location}
+          </li>
+        );
+      });
     
     return (
         <div>

@@ -1,19 +1,18 @@
 import React from "react";
 import logo from "../assets/ing-logo-rectangular.jpg";
 
-const Navbar = () => {
+const Navbar = ({ toggleOverlay, adminContent, aboutContent }) => {
   const styles = {
-  navbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "5px 20px",
-    marginTop: "10px",
-    backgroundColor: "#ffffff",
-    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-    width: "96%",
-  },
-  // .
+    navbar: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: "5px 20px",
+      marginTop: "10px",
+      backgroundColor: "#ffffff",
+      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+      width: "96%",
+    },
     logo: {
       width: "200px",
       height: "90px",
@@ -48,10 +47,12 @@ const Navbar = () => {
       </div>
       <div style={styles.title}>ING BUS</div>
       <div style={styles.buttons}>
-        <button style={styles.button}>Admin</button>
-        <button style={styles.button}>About</button>
+        <button style={styles.button} onClick={() => toggleOverlay(adminContent)}>Admin</button>
+        <button style={styles.button} onClick={() => toggleOverlay(aboutContent)}>About</button>
       </div>
     </nav>
   );
 }
 export default Navbar;
+
+
