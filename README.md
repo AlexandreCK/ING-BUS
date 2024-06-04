@@ -1,31 +1,12 @@
 # ING-BUS
 
-## DESCRIPCIÓ GENERAL DEL PROJECTE:
+## ABOUT THE PROJECT:
 
-In order to reduce storage in data centers and therefore CO2 emissions, we want to create more awareness among our ING colleagues that we can manage our storage better.
-
-There is a lot of unnecessary data storage, especially work email. By consciously cleaning our mailboxes and permanently deleting the emails, it makes a huge difference.
-
-7 permanently deleted emails is equivalent to driving 1 kilometer in a diesel car.
-(Substantiation of figures follows)
-
-We have created a route past all ING offices in the major cities in the Netherlands.
-
-The intention is for the virtual bus to drive along this route and become visible via the link that will be created.
-(Route to follow)
-
-The virtual bus is filled with permanently deleted emails from ING colleagues, and every office passed participates in deleting emails. This means the bus is going faster and faster and is therefore becoming greener.
-
-We would like to place the link in our ING sharepoint and occasionally include a reference in a weekly email. This also requires some kind of domain name and a dashboard?
-
-We use this to visualize the result of the deleted emails among our colleagues and this also motivates us to continue with it.
-
-This is the basic concept.
-The content follows the information from my colleague Niki Hiemstra.
-
-You can always text me with questions.
+We're on a mission to reduce our data storage footprint and CO2 emissions at ING! 
+Did you know that permanently deleting just 7 emails can make a difference equivalent to driving 1 kilometer less in a diesel car? 
+That's why we're creating a fun and engaging way to raise awareness about email cleanup among ING colleagues across the Netherlands. 
+Join us on a virtual bus ride as it travels past ING offices in major cities, filling up with permanently deleted emails and getting greener with every stop. 
+The more emails we delete together, the faster our bus travels! 
+We'll track our progress on a dashboard and share it via our ING Sharepoint and weekly emails. 
+Let's clean out our inboxes and make a positive impact together!  Have questions? Text us or chat with us on Teams - we aim for one hour of live contact per week.
 Further contact can take place via Teams. We aim to have one hour of live contact per week.
-
-## DESCRIPCIÓ DETALLADA DEL PROJECTE:
-
-TBD
