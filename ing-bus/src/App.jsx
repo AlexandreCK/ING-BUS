@@ -7,26 +7,34 @@ import Map from "./components/Map.jsx";
 import Overlay from "./components/Overlay.jsx";
 
 function App() {
+  const adminOptions = [
+    { label: 'Create a Post', action: () => console.log('Create a Post clicked') },
+    { label: 'Change Route', action: () => console.log('Change Route clicked') },
+    { label: 'Add Location', action: () => console.log('Add Location clicked') },
+    { label: 'Remove Location', action: () => console.log('Remove Location clicked') },
+  ];
+  
   const adminContent = (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h2 style={{ color: 'black' }}>Administration Panel</h2>
-      <p style={{ color:'black', fontSize: '16px', lineHeight: '1.5' }}>Here you can manage the application settings.</p>
-      <p style={{ color:'black', fontSize: '16px', lineHeight: '1.5' }}>Option</p>
-      <p style={{ color:'black', fontSize: '16px', lineHeight: '1.5' }}>Option</p>
-      <p style={{ color:'black', fontSize: '16px', lineHeight: '1.5' }}>Option</p>
-      <p style={{ color:'black', fontSize: '16px', lineHeight: '1.5' }}>Option</p>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+        {adminOptions.map((option, index) => (
+          <button key={index} onClick={option.action}>{option.label}</button>
+        ))}
+      </div>
     </div>
   );
   
+
   const aboutContent = (
     <div>
       <h2 style={{ color: 'black' }}>About ING BUS</h2>
-      <p style={{ color:'black', fontSize: '16px', lineHeight: '1.5' }}>We're on a mission to reduce our data storage footprint and CO2 emissions at ING! Did you know that permanently deleting just 7 emails can make a difference equivalent to driving 1 kilometer less in a diesel car? That's why we're creating a fun and engaging way to raise awareness about email cleanup among ING colleagues across the Netherlands. Join us on a virtual bus ride as it travels past ING offices in major cities, filling up with permanently deleted emails and getting greener with every stop. The more emails we delete together, the faster our bus travels! We'll track our progress on a dashboard and share it via our ING Sharepoint and weekly emails. Let's clean out our inboxes and make a positive impact together!  Have questions? Text us or chat with us on Teams - we aim for one hour of live contact per week.</p>
+      <p style={{ color:'black', fontSize: '16px', lineHeight: '1.5' }}>We're on a mission to reduce our data storage footprint and CO2 emissions at ING! Did you know that permanently deleting just 7 emails can make a difference equivalent to driving 1 kilometer less in a diesel car? That's why we're creating a fun and engaging way to raise awareness about email cleanup among ING colleagues across the Netherlands. Join us on a virtual bus ride as it travels past ING offices in major cities, filling up with permanently deleted emails and getting greener with every stop. The more emails we delete together, the faster our bus travels!</p>
     </div>
   );
 
-  const [overlayContent, setOverlayContent] = useState(aboutContent); // Set initial state to aboutContent
-  
+  const [overlayContent, setOverlayContent] = useState(aboutContent);
+
   const toggleOverlay = (content) => {
     setOverlayContent(content);
   };
@@ -76,21 +84,13 @@ function App() {
     margin: '0',
   };
 
-  const headerStyles = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '10%',
-  };
-
   const locations = [
     { lat: 52.3702, lng: 4.8952 },
   ];
 
   return (
     <div style={appStyles}>
-      <Navbar toggleOverlay={toggleOverlay} adminContent={adminContent} aboutContent={aboutContent} />
+      {!overlayContent && <Navbar toggleOverlay={toggleOverlay} adminContent={adminContent} aboutContent={aboutContent} />}
       <div style={contentStyles}>
         <div style={squareStyles}>
           <Map locations={locations}/>
@@ -106,5 +106,3 @@ function App() {
 }
 
 export default App;
-
-
