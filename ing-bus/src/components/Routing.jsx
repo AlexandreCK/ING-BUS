@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useMap } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet-routing-machine';
+import { useEffect } from "react";
+import { useMap } from "react-leaflet";
+import L from "leaflet";
+import "leaflet-routing-machine";
 
 const Routing = ({ start, end }) => {
   const map = useMap();
@@ -13,9 +13,8 @@ const Routing = ({ start, end }) => {
         L.latLng(end[0], end[1])
       ],
       routeWhileDragging: true,
-      createMarker: () => null,
       lineOptions: {
-        styles: [{ color: '#ff5e36', weight: 4.5 }]
+        styles: [{ color: "#ff5e36", weight: 4.5 }]
       },
       addWaypoints: false,
       draggableWaypoints: false,
@@ -26,9 +25,9 @@ const Routing = ({ start, end }) => {
       createMarker: () => null
     }).addTo(map);
 
-    const routingContainer = document.querySelector('.leaflet-routing-container');
+    const routingContainer = document.querySelector(".leaflet-routing-container");
     if (routingContainer) {
-      routingContainer.style.display = 'none';
+      routingContainer.style.display = "none";
     }
     return () => {
       map.removeControl(routingControl);
