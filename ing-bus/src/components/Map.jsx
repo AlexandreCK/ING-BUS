@@ -86,7 +86,7 @@ const Map = ({ locations, deletedItems, totalDistance }) => {
   return (
     <div style={{ height: "100%", width: "100%", position: "relative" }}>
       <style>
-        {`
+        {`ww
           .custom-popup .leaflet-popup-content-wrapper {
             background-color: #ff5e36;
             color: black;
