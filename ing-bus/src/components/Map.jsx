@@ -138,7 +138,6 @@ const Map = ({ locations, deletedItems, totalDistance }) => {
                 {location.post && (
                   <div style={{ maxWidth: "80vw" }}>
                     {" "}
-                    {/* Adjust maximum width as needed */}
                     <p
                       style={{
                         fontSize: "16px",
