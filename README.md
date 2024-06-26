@@ -20,7 +20,6 @@ We're on a mission to reduce our data storage footprint and CO2 emissions at ING
 ### Prerequisites
 
 - **Node.js** (Latest version: v21.6.1)
-- **npm** 
 - **React** (Version: 18.2.0)
 - **Vite** (Version: 5.2.0, included as a dependency and used for development server and build process)
 
@@ -41,14 +40,17 @@ We're on a mission to reduce our data storage footprint and CO2 emissions at ING
 ### Running The Project
 
    To start the project run:
+   
    ```sh
    cd ing-bus
    npm run dev
    ```
+
    This will start the development server and you can view the project by navigating to the provided link in the console in your web browser.
-   If you run into an "operation not permitted error", navigate to this path \ing-bus\node_modules\.vite, delete the "deps" directorty and try again.
+   *If you run into an "operation not permitted error", navigate to this path \ing-bus\node_modules\ .vite, delete the "deps" directory and run again the "npm run dev" command.*
    
 ## Usage
+
 ### Interactive Map
 
 - **View Route**: Check out the bus route and office locations on the map.
@@ -77,10 +79,11 @@ You can adjust various parameters such as the number of emails deleted per kilom
           Overlay.jsx
           Routing.jsx
         /utils             # Utility functions
-      App.jsx              # Main application component
-      index.css            # Global styles
-      main.jsx             # Entry point for the React application
+        App.jsx            # Main application component
+        index.css          # Global styles
+        main.jsx           # Entry point for the React application
       .eslintrc.cjs        # ESLint configuration
+      .gitattributes       # Git attributes file
       .gitignore           # Git ignore file
       index.html           # Main HTML file
       package-lock.json    # NPM lock file
@@ -94,6 +97,7 @@ You can adjust various parameters such as the number of emails deleted per kilom
 ### Common Issues
 
 - **Office selection**: Occasionally, when selecting an office location from the administration panel, the selection might not be immediately visible in the UI. To resolve this, simply close and reopen the post creation panel. The previously selected office location should now be correctly displayed.
+- **Running the development environment**: "operation not permitted error" Navigate to this path \ing-bus\node_modules\.vite and delete the "deps" directory and run again the "npm run dev" command.
 
 # License
 
