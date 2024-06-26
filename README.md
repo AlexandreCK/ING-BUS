@@ -46,6 +46,7 @@ We're on a mission to reduce our data storage footprint and CO2 emissions at ING
    npm run dev
    ```
    This will start the development server and you can view the project by navigating to the provided link in the console in your web browser.
+   If you run into an "operation not permitted error", navigate to this path \ing-bus\node_modules\.vite, delete the "deps" directorty and try again.
    
 ## Usage
 ### Interactive Map
