@@ -8,55 +8,77 @@ const Legend = ({ deletedItems, totalDistance }) => {
   const fuelLeft = Math.max(0, Math.floor(deletedItems / 7) - totalDistance);
 
   return (
-    <div style={{ 
-      position: "absolute", 
-      bottom: "85%", 
-      left: "1%", 
-      zIndex: 1000, 
-      backgroundColor: "#242424", 
-      padding: "20px", 
-      borderRadius: "10px", 
-      color: "white", 
-      fontFamily: "'Arial', sans-serif", 
-      fontSize: "18px", 
-      fontWeight: "500",
-      lineHeight: "1.5",
-      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
-    }}>
+    <div
+      style={{
+        position: "absolute",
+        bottom: "85%",
+        left: "1%",
+        zIndex: 1000,
+        backgroundColor: "#242424",
+        padding: "20px",
+        borderRadius: "10px",
+        color: "white",
+        fontFamily: "'Arial', sans-serif",
+        fontSize: "18px",
+        fontWeight: "500",
+        lineHeight: "1.5",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       <div>
-        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>Total distance:</span> {totalDistance} KM<br />
-        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>Fuel left:</span> {fuelLeft} KM<br />
-        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>Items deleted:</span> {deletedItems}
+        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>
+          Total distance:
+        </span>{" "}
+        {totalDistance} KM
+        <br />
+        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>
+          Fuel left:
+        </span>{" "}
+        {fuelLeft} KM
+        <br />
+        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>
+          Items deleted:
+        </span>{" "}
+        {deletedItems}
       </div>
     </div>
   );
 };
 
 const Milestones = ({ itemsDeleted }) => {
-  const milestones = [100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
-  
+  const milestones = [
+    100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000,
+  ];
+
   return (
-    <div style={{ 
-      position: "absolute",
-      textAlign: "center",
-      bottom: "51%", 
-      left: "1%", 
-      zIndex: 1000, 
-      backgroundColor: "#242424", 
-      padding: "20px", 
-      borderRadius: "10px", 
-      color: "white", 
-      fontFamily: "'Arial', sans-serif", 
-      fontSize: "18px", 
-      fontWeight: "500",
-      lineHeight: "1.5",
-      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
-    }}>
+    <div
+      style={{
+        position: "absolute",
+        textAlign: "center",
+        bottom: "51%",
+        left: "1%",
+        zIndex: 1000,
+        backgroundColor: "#242424",
+        padding: "20px",
+        borderRadius: "10px",
+        color: "white",
+        fontFamily: "'Arial', sans-serif",
+        fontSize: "18px",
+        fontWeight: "500",
+        lineHeight: "1.5",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       <div>
-        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>MILESTONES</span><br />
-        <span style={{ color: "white" }}>Deleted items:</span><br />
-        {milestones.map(milestone => (
-          <div key={milestone} style={{ color: itemsDeleted >= milestone ? "#ff5e36" : "white" }}>
+        <span style={{ color: "#ff5e36", fontWeight: "bold" }}>MILESTONES</span>
+        <br />
+        <span style={{ color: "white" }}>Deleted items:</span>
+        <br />
+        {milestones.map((milestone) => (
+          <div
+            key={milestone}
+            style={{ color: itemsDeleted >= milestone ? "#ff5e36" : "white" }}
+          >
             {milestone}
           </div>
         ))}
@@ -112,12 +134,13 @@ const Map = ({ locations, deletedItems, totalDistance }) => {
       >
         <TileLayer
           url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-          attribution=""
+          attribution="Tiles © Esri"
         />
         <TileLayer
           url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
           attribution=""
         />
+
         {locations.map((location, index) => (
           <Marker
             key={index}
