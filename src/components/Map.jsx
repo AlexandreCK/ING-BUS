@@ -1,9 +1,13 @@
+// This component renders a map with markers, popups, a legend, and milestones. It uses the React-Leaflet library for the map functionalities.
+
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import ingIcon from "../assets/favicon.ico";
 import ingBusIcon from "../assets/ing-bus.png";
 import Routing from "./Routing";
 
+// Legend component definition
+// Displays the total distance, fuel left, and items deleted
 const Legend = ({ deletedItems, totalDistance }) => {
   const fuelLeft = Math.max(0, Math.floor(deletedItems / 7) - totalDistance);
 
@@ -45,6 +49,8 @@ const Legend = ({ deletedItems, totalDistance }) => {
   );
 };
 
+// Milestones component definition
+// Displays milestones based on the number of items deleted
 const Milestones = ({ itemsDeleted }) => {
   const milestones = [
     100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000,
@@ -87,28 +93,33 @@ const Milestones = ({ itemsDeleted }) => {
   );
 };
 
+// Map component definition
+// Renders the map with markers, popups, a legend, and milestones
 const Map = ({ locations, deletedItems, totalDistance }) => {
-  const defaultCenter = [52.1326, 5.2913];
+  const defaultCenter = [52.1326, 5.2913]; // Center coordinates for the map
 
+  // Custom icon for the markers
   const customIcon = new Icon({
     iconUrl: ingIcon,
     iconSize: [40, 40],
     iconAnchor: [12, 41],
   });
 
+  // Icon for the bus marker
   const bus = new Icon({
     iconUrl: ingBusIcon,
     iconSize: [40, 40],
     iconAnchor: [12, 41],
   });
 
-  const start = [53.2003, 5.7988]; // start point (example coordinates)
-  const end = [53.2244, 6.0441]; // end point (example coordinates)
+  // Coordinates for the example start and end points
+  const start = [53.2003, 5.7988]; // Example start coordinates
+  const end = [53.2244, 6.0441]; // Example end coordinates
 
   return (
     <div style={{ height: "100%", width: "100%", position: "relative" }}>
       <style>
-        {`ww
+        {`
           .custom-popup .leaflet-popup-content-wrapper {
             background-color: #ff5e36;
             color: black;
@@ -141,6 +152,7 @@ const Map = ({ locations, deletedItems, totalDistance }) => {
           attribution=""
         />
 
+        {/* Render markers for each location */}
         {locations.map((location, index) => (
           <Marker
             key={index}
@@ -185,6 +197,8 @@ const Map = ({ locations, deletedItems, totalDistance }) => {
             </Popup>
           </Marker>
         ))}
+
+        {/* Render marker for the bus */}
         <Marker
           position={end}
           icon={bus}
@@ -195,8 +209,12 @@ const Map = ({ locations, deletedItems, totalDistance }) => {
             <span>ING BUS</span>
           </Popup>
         </Marker>
+
+        {/* Render example routing between start and end points */}
         <Routing start={start} end={end} />
       </MapContainer>
+
+      {/* Render legend and milestones components */}
       <Legend deletedItems={deletedItems} totalDistance={totalDistance} />
       <Milestones itemsDeleted={deletedItems} />
     </div>

@@ -54,7 +54,7 @@ We're on a mission to reduce our data storage footprint and CO2 emissions at ING
 ### Interactive Map
 
 - **View Route**: Check out the bus route and office locations on the map.
-- **Track Progress**: See how many emails have been deleted and how far the bus has traveled.
+- **Demonstration Of Tracked Progress**: See how many emails have been deleted and how far the bus has traveled.
 - **Post Updates**: Click on office locations to view post updates.
 
 ### Modifying parameters
@@ -72,7 +72,6 @@ You can adjust various parameters such as the number of emails deleted per kilom
         /assets            # Static assets like images and styles
         /components        # React components
           Footer.jsx
-          Header.jsx
           LocationCities.jsx
           Map.jsx
           Navbar.jsx
@@ -91,6 +90,12 @@ You can adjust various parameters such as the number of emails deleted per kilom
       README.md            # Project README file
       vite.config.js       # Vite configuration file
    ```
+
+## To-Do List
+
+- **Implement Functional Routing**: Integrate actual routing functionality and ensure the bus follows the designated route.
+- **Dynamic Bus Location Update**: Develop functionality to update the bus location dynamically and adjust its color based on remaining fuel.
+- **Enhance UI/UX Design**: Improve visual appeal by refining the user interface. Incorporate sound and visual cues to enhance user experience from the current placeholder design.
 
 ## FAQ
 

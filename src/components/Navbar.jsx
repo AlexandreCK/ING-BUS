@@ -1,7 +1,15 @@
+// This component defines the navigation bar for the application, including the logo, title, and buttons for Admin and About overlays.
+
 import React from "react";
 import logo from "../assets/ing-logo-rectangular.jpg";
 
+// Navbar component definition
+// Props:
+// - toggleOverlay: function to toggle the overlay content
+// - adminContent: content to be shown when Admin button is clicked
+// - aboutContent: content to be shown when About button is clicked
 const Navbar = ({ toggleOverlay, adminContent, aboutContent }) => {
+  // Inline styles for the Navbar component
   const styles = {
     navbar: {
       display: "flex",
@@ -36,23 +44,40 @@ const Navbar = ({ toggleOverlay, adminContent, aboutContent }) => {
       color: "black",
       fontWeight: "bold",
       textTransform: "uppercase",
-      fontfamily: "Arial, sans-serif",
+      fontFamily: "Arial, sans-serif",
     },
   };
 
   return (
     <nav style={styles.navbar}>
+      {/* Logo section */}
       <div className="navbar-logo">
         <img src={logo} alt="ing-logo" style={styles.logo} />
       </div>
+
+      {/* Title section */}
       <div style={styles.title}>ING BUS</div>
+
+      {/* Buttons section */}
       <div style={styles.buttons}>
-        <button style={styles.button} onClick={() => toggleOverlay(adminContent)}>Admin</button>
-        <button style={styles.button} onClick={() => toggleOverlay(aboutContent)}>About</button>
+        {/* Admin button */}
+        <button
+          style={styles.button}
+          onClick={() => toggleOverlay(adminContent)}
+        >
+          Admin
+        </button>
+
+        {/* About button */}
+        <button
+          style={styles.button}
+          onClick={() => toggleOverlay(aboutContent)}
+        >
+          About
+        </button>
       </div>
     </nav>
   );
-}
+};
+
 export default Navbar;
-
-

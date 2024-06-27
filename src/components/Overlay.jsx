@@ -1,3 +1,5 @@
+// This component displays a modal-like overlay with dynamic content and a close button.
+
 import React from "react";
 
 const Overlay = ({ content, closeOverlay }) => {
@@ -35,12 +37,15 @@ const Overlay = ({ content, closeOverlay }) => {
   return (
     <div style={overlayStyles}>
       <div style={contentStyles}>
-        {content}
-        <button style={buttonStyles} onClick={closeOverlay}>Close</button>
+        {content} {/* Display dynamic content */}
+        <button style={buttonStyles} onClick={closeOverlay}>
+          Close
+        </button>
       </div>
     </div>
   );
 };
 
 export default Overlay;
+
 

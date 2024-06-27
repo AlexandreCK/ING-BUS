@@ -1,4 +1,10 @@
+// This component lists the locations of cities along with their addresses. It highlights visited locations in a different color.
+
+import React from "react";
+
+// LocationCities component definition
 function LocationCities() {
+    // List of cities
     const cities = [
         "Leeuwarden",
         "Leeuwarden",
@@ -41,6 +47,7 @@ function LocationCities() {
         "Alkmaar"
     ];
     
+    // List of addresses corresponding to the cities
     const addresses = [
         "Tesselschadedestraat 1",
         "Zuiderplein 6",
@@ -83,8 +90,10 @@ function LocationCities() {
         "Laat 214"
     ];
     
+    // Combine cities and addresses into a single array of strings
     const combined = cities.map((city, i) => `${city} - ${addresses[i]}`);
 
+    // Create list items for each location, highlighting specific locations
     const locationItems = combined.map((location, index) => {
         const isHighlighted = location === "Leeuwarden - Tesselschadedestraat 1" || location === "Leeuwarden - Zuiderplein 6";
         return (
@@ -96,7 +105,9 @@ function LocationCities() {
     
     return (
         <div>
+            {/* Title for the locations list */}
             <h2 style={{ textAlign: "center" }}>Locations</h2>
+            {/* List of locations */}
             <ul>{locationItems}</ul>
         </div>
     );

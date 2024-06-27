@@ -1,3 +1,5 @@
+// This component is the main application component. It renders the Navbar, Map, LocationCities, and Footer components, and manages the overlay content and state.
+
 import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import Footer from "./components/Footer.jsx";
@@ -7,18 +9,21 @@ import Map from "./components/Map.jsx";
 import Overlay from "./components/Overlay.jsx";
 
 function App() {
+  // Define the content for the "About" section
   const aboutContent = (
     <div>
       <h2 style={{ color: "black" }}>About ING BUS</h2>
       <p style={{ color: "black", fontSize: "16px", lineHeight: "1.5" }}>
-        We're on a mission to reduce our data storage footprint and CO2 emissions at ING! Did you know that permanently deleting just 7 emails can make a difference equivalent to driving 1 kilometer less in a diesel car? That"s why we're creating a fun and engaging way to raise awareness about email cleanup among ING colleagues across the Netherlands. Join us on a virtual bus ride as it travels past ING offices in major cities, filling up with permanently deleted emails and getting greener with every stop. The more emails we delete together, the faster our bus travels!
+        We"re on a mission to reduce our data storage footprint and CO2 emissions at ING! Did you know that permanently deleting just 7 emails can make a difference equivalent to driving 1 kilometer less in a diesel car? That"s why we"re creating a fun and engaging way to raise awareness about email cleanup among ING colleagues across the Netherlands. Join us on a virtual bus ride as it travels past ING offices in major cities, filling up with permanently deleted emails and getting greener with every stop. The more emails we delete together, the faster our bus travels!
       </p>
     </div>
   );
 
-  const [deletedItems, setDeletedItems] = useState(440); // Initial value
-  const totalDistance = 17.8; // Define the total distance
+  // Example state variables
+  const [deletedItems, setDeletedItems] = useState(440); // Initial number of deleted items
+  const totalDistance = 17.8; // Total distance for the bus ride according to the provided formula
 
+  // List of locations
   const [locations, setLocations] = useState([
     { name: "Leeuwarden - Tesselschadedestraat 1", lat: 53.2028, lng: 5.7987, post: null },
     { name: "Leeuwarden - Zuiderplein 6", lat: 53.2003, lng: 5.7988, post: null },
@@ -61,9 +66,10 @@ function App() {
     { name: "Alkmaar - Laat 214", lat: 52.6340, lng: 4.7465, post: null }
   ]);
 
-  const [selectedLocationIndex, setSelectedLocationIndex] = useState(null);
-  const [overlayContent, setOverlayContent] = useState(aboutContent);
+  const [selectedLocationIndex, setSelectedLocationIndex] = useState(null); // State for selected location index
+  const [overlayContent, setOverlayContent] = useState(aboutContent); // State for overlay content
 
+  // Handler for creating a post
   const handleCreatePost = (event) => {
     event.preventDefault();
     const postText = event.target.postText.value;
@@ -76,12 +82,13 @@ function App() {
     }
   };
 
+  // Handler for selecting a location
   const handleSelectLocation = (event) => {
     const index = event.target.value;
     setSelectedLocationIndex(index);
   };
-  
 
+  // Options for the administration panel
   const adminOptions = [
     {
       label: "Create a Post",
@@ -101,12 +108,13 @@ function App() {
     },
   ];
 
+  // Content for the "Create Post" overlay
   const createPostContent = (
     <div>
       <h2 style={{ color: "black", fontFamily: "Arial"}}>CREATE POST</h2>
-      <form onSubmit={handleCreatePost} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-          <span style={{ fontWeight: 'bold' }}>Select Location:</span>
+      <form onSubmit={handleCreatePost} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        <label style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <span style={{ fontWeight: "bold" }}>Select Location:</span>
           <select
             value={selectedLocationIndex !== null ? selectedLocationIndex : ""}
             onChange={handleSelectLocation}
@@ -121,27 +129,30 @@ function App() {
             ))}
           </select>
         </label>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-          <span style={{ fontWeight: 'bold' }}>Post Text:</span>
+        <label style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <span style={{ fontWeight: "bold" }}>Post Text:</span>
           <input type="text" name="postText" required />
         </label>
-        <label style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-          <span style={{ fontWeight: 'bold' }}>Post Image:</span>
+        <label style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <span style={{ fontWeight: "bold" }}>Post Image:</span>
           <input type="file" name="postImage" accept="image/*" required />
         </label>
-        <button type="submit" style={{ alignSelf: 'center', padding: '8px 16px', backgroundColor: '#ff5e36', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Add Post</button>
+        <button type="submit" style={{ alignSelf: "center", padding: "8px 16px", backgroundColor: "#ff5e36", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer" }}>Add Post</button>
       </form>
     </div>
   );
 
+  // Function to toggle the overlay content
   const toggleOverlay = (content) => {
     setOverlayContent(content);
   };
 
+  // Function to close the overlay
   const closeOverlay = () => {
     setOverlayContent(null);
   };
 
+  // Styles for the application
   const appStyles = {
     display: "flex",
     flexDirection: "column",
@@ -183,6 +194,7 @@ function App() {
     margin: "0",
   };
 
+  // Content for the administration panel
   const adminContent = (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h2 style={{ color: "black" }}>Administration Panel</h2>
